@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :addresses
   has_many :orders
-  has_many :products, through: :order_contents, source: :product
+  has_many :products, through: :orders, source: :products
+
   belongs_to :billing_address, :foreign_key => :billing_id, :class_name => "Address"
   belongs_to :shipping_address, :foreign_key => :shipping_id, :class_name => "Address"
   
